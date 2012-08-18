@@ -12,7 +12,7 @@ XSLoader::load(
 );
 
 use Exporter 'import';
-our @EXPORT = ('try');
+our @EXPORT = our @EXPORT_OK = ('try');
 
 use Try::Tiny ();
 
