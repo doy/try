@@ -56,6 +56,21 @@ syntax of the C<try> statement. This is almost certainly not an issue.
 
 =cut
 
+=head1 EXPORTS
+
+=head2 try
+
+C<try> takes a block to run, and catch exceptions from. The block can
+optionally be followed by C<catch> and another block and C<finally> and another
+block. The C<catch> block is run when the C<try> block throws an exception, and
+the exception thrown will be in both C<$_> and C<@_>. The C<finally> block will
+be run after the C<try> and C<catch> blocks regardless of what happens, even if
+the C<catch> block rethrows the exception. The exception thrown will be in
+C<@_> but B<not> C<$_> (this may change in the future, since I'm pretty sure
+the reasoning for this is no longer useful in 5.14).
+
+=cut
+
 sub try {
     my ($try, $catch, $finally) = @_;
     &Try::Tiny::try(
